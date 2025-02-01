@@ -24,7 +24,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&amp;display=swap" rel="stylesheet">
 </head>
 <body class="bg-[var(--bg-primary)] text-[var(--text-primary)] font-poppins">
-  <script src="script.js"></script>
+  <div id="preloader" style="text-align: center;">
+    <img src="assets/mrordenador.png" class="loader-img rounded-xl" alt="Loading...">
+</div>
   <div class="min-h-screen flex">
     <aside class="w-64 bg-[var(--bg-secondary)] p-4 sticky top-0 bottom-0 h-screen">
       <div class="text-xl font-bold mb-6 text-[var(--accent)]">
@@ -436,7 +438,7 @@
         </section>
         <footer style="background-color: transparent; color: #ecf0f1; text-align: center; font-family: Arial, sans-serif; font-size: 16px;">
           <p style="margin: 0; color: var(--text-primary)">If you are a guide maker and would like your guide to be posted on a website like this, send a DM to mrordenador.</p>
-          <p style="margin: 0; color: var(--text-secondary)">SMPGuide v2.0 - McWetPaper, SpawnPlayer, and MrOrdenador GPL v3.0</p>
+          <p style="margin: 0; color: var(--text-secondary)">SMPGuide v2.1 - McWetPaper, SpawnPlayer, and MrOrdenador GPL v3.0</p>
 
         </footer>
       </section>
@@ -456,7 +458,38 @@
     }
   });
   });
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.style.opacity = '0';
+    setTimeout(() => preloader.remove(), 500);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
 
-  </script>
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = (window.scrollY > 500) ? 'block' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.style.opacity = '0';
+    setTimeout(() => preloader.remove(), 500);
+  });
+  </script>  
 </body>
 </html>
