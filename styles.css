@@ -36,22 +36,6 @@ nav ul li a.active {
   background: var(--bg-primary);
   transform: translateX(5px);
 }
-@media (max-width: 768px) {
-  .min-h-screen.flex {
-    flex-direction: column;
-  }
-  aside {
-    width: 100% !important;
-    height: auto !important;
-    position: relative;
-  }
-  main {
-    padding: 1rem !important;
-  }
-  .video-container video {
-    width: 100% !important;
-  }
-}
 ::-webkit-scrollbar-thumb {
   transition: background 0.3s;
 }
@@ -101,4 +85,43 @@ nav ul li a.active {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+@media (max-width: 768px) {
+  .min-h-screen.flex {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  aside {
+    width: 60px !important;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  aside span, aside i, aside svg {
+    font-size: 1.5rem;
+    display: block;
+    margin: 1rem 0;
+  }
+
+  aside p, aside .text { 
+    display: none;
+  }
+
+  main {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    padding: 1rem !important;
+  }
+
+  .video-container video {
+    width: 100% !important;
+  }
 }
